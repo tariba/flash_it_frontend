@@ -11,6 +11,12 @@ function App() {
   const [randomQA, setRandomQA] = useState({question : `How do you learn to code?'`, answer: 'Flash it!!!'});
   const [flip, setFlip] = useState(false);
 
+  async function getRandomQuestion () {
+
+    
+
+  }
+
   let flashcards = [
     { id: "abc1", question: "question1", answer: "answer1" },
     { id: "abc1", question: "question2", answer: "answer2" },
