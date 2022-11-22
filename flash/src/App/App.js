@@ -1,17 +1,15 @@
 import "./App.css";
 import NavBar from "../NavBar/NavBar";
 import Cards from "../Cards/Cards";
+import QCard from '../Cards/Card/Qcard';
+import ACard from '../Cards/Card/ACard';
 import { useState } from "react";
 
 function App() {
   // const [type, setType] = useState("random");
-  let question = "";
-  let answer = "";
-
-  // let [question, setQuestion] = useState("");
-  // let [answer, setAnswer] = useState("");
-
-  let [randomQA, setRandomQA] = useState({});
+  
+  const [randomQA, setRandomQA] = useState({question : `How do you learn to code?'`, answer: 'Flash it!!!'});
+  const [flip, setFlip] = useState(false);
 
   let flashcards = [
     { id: "abc1", question: "question1", answer: "answer1" },
@@ -26,9 +24,6 @@ function App() {
     setRandomQA(flashcards[index]);
   }
 
-  question = getData().question;
-  answer = getData().answer;
-
   // function handleClick(event) {
   //   setType(event.target.text);
   // }
@@ -39,10 +34,26 @@ function App() {
     return data;
   }
 
+  function flipIt () {
+    setFlip(!flip);
+  }
+
+  function handleClick () {
+    nextClick();
+    if (flip) {
+      flipIt();
+    }
+  }
+
+
   return (
     <div className="App">
       <NavBar />
-      <Cards question={question} answer={answer} nextClick={nextClick}></Cards>
+      <Cards question={randomQA.question} answer={randomQA.answer} nextClick={nextClick}>
+        <QCard id='questionCard' Qtext = {randomQA.question}/>
+        <ACard id='answerCard' Atext = {randomQA.answer} onClick = {flipIt} flipped = {flip}/>
+        <button onClick ={handleClick} >Next Question</button>
+      </Cards>
     </div>
   );
 }

@@ -3,7 +3,7 @@ import React from "react";
 function NavBar() {
   return (
     <nav className="nav-bar">
-      <ol>
+      <ul>
         <li className="logo">
           <img src="" alt="" />
         </li>
@@ -19,7 +19,7 @@ function NavBar() {
         <li className="random">
           <a href="#">Random</a>
         </li>
-      </ol>
+      </ul>
     </nav>
   );
 }
