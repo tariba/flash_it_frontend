@@ -24,21 +24,35 @@ function App() {
     }
     getData();
   }, []);
-  console.log("this is our data", data);
+
+  // console.log("this is our data", data);
+  
 
   function navClick(event) {
-    setType(event.target.className);
-    console.log(type);
+    let subject = event.target.className;
+    // console.log('this is even.target.className', subject);
+
+    let arr = ['Technical', 'Behavioural'];
+    let chosen = arr[Math.floor(Math.random()*arr.length)];
+    // console.log('this is chosen', chosen);
+    if (subject === 'Random') subject = chosen; 
+    const result = data.filter((object) => object.subject === subject);
+    // console.log("this is the result", result);
+    const index = Math.floor(Math.random() * result.length);
+    // console.log(data, result, result[index]);
+    let resultObject = result[index];
+    // console.log("what are you?", resultObject);
+    setRandomQA(resultObject);
+    setType(subject);
   }
 
   async function nextClick() {
-    setType("Technical");
     const result = data.filter((object) => object.subject === type);
-    console.log("this is the result", result);
+    // console.log("this is the result", result);
     const index = Math.floor(Math.random() * result.length);
-    console.log(data, result, result[index]);
+    // console.log(data, result, result[index]);
     let resultObject = result[index];
-    console.log("what are you?", resultObject);
+    // console.log("what are you?", resultObject);
     setRandomQA(resultObject);
   }
 
@@ -52,7 +66,7 @@ function App() {
       flipIt();
     }
   }
-
+console.log('this is the randomQA', randomQA);
   return (
     <div className="App">
       <NavBar navClick={navClick} />

@@ -11,7 +11,7 @@ function NavBar({ navClick }) {
       </div>
       <nav className="nav-bar">
         <button
-          className="technical"
+          className="Technical"
           onClick={(e) => {
             navClick(e);
           }}
@@ -19,7 +19,7 @@ function NavBar({ navClick }) {
           Technical
         </button>
         <button
-          className="behavioural"
+          className="Behavioural"
           onClick={(e) => {
             navClick(e);
           }}
@@ -27,7 +27,7 @@ function NavBar({ navClick }) {
           Behavioural
         </button>
         <button
-          className="random"
+          className="Random"
           onClick={(e) => {
             navClick(e);
           }}
