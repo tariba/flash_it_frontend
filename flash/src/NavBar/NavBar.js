@@ -1,4 +1,5 @@
 import React from "react";
+import "./NavBar.css";
 
 function NavBar({ navClick }) {
   return (
@@ -11,6 +12,7 @@ function NavBar({ navClick }) {
       </div>
       <nav className="nav-bar">
         <button
+          id="button-85"
           className="Technical"
           onClick={(e) => {
             navClick(e);
@@ -19,6 +21,7 @@ function NavBar({ navClick }) {
           Technical
         </button>
         <button
+          id="button-86"
           className="Behavioural"
           onClick={(e) => {
             navClick(e);
@@ -27,6 +30,7 @@ function NavBar({ navClick }) {
           Behavioural
         </button>
         <button
+          id="button-87"
           className="Random"
           onClick={(e) => {
             navClick(e);
