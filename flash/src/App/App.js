@@ -94,16 +94,17 @@ function App() {
   return (
     <div className="App">
       <NavBar navClick={navClick} />
-
-      <Cards>
-        <QCard id="questionCard" Qtext={randomQA.question} />
-        <ACard
-          id="answerCard"
-          Atext={randomQA.answer}
-          onClick={flipIt}
-          flipped={flip}
-        />
-        <button onClick={handleClick}>Next Question</button>
+      <Cards id = 'cards'>
+        <div id='card-holder'>
+          <QCard id="questionCard" Qtext={randomQA.question} />
+          <ACard
+            id="answerCard"
+            Atext={randomQA.answer}
+            onClick={flipIt}
+            flipped={flip}
+          />
+        </div>
+        <button id='button-64' onClick={handleClick}><span>Next Question</span></button>
       </Cards>
     </div>
   );
