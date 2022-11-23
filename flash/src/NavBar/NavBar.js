@@ -1,6 +1,6 @@
 import React from "react";
 
-function NavBar() {
+function NavBar({ navClick }) {
   return (
     <div>
       <div>
@@ -10,9 +10,30 @@ function NavBar() {
         />
       </div>
       <nav className="nav-bar">
-        <button className="technical">Technical</button>
-        <button className="behavioural">Behavioural</button>
-        <button className="random">Random</button>
+        <button
+          className="technical"
+          onClick={(e) => {
+            navClick(e);
+          }}
+        >
+          Technical
+        </button>
+        <button
+          className="behavioural"
+          onClick={(e) => {
+            navClick(e);
+          }}
+        >
+          Behavioural
+        </button>
+        <button
+          className="random"
+          onClick={(e) => {
+            navClick(e);
+          }}
+        >
+          Random
+        </button>
       </nav>
     </div>
   );

@@ -7,36 +7,39 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 function App() {
-  // const [type, setType] = useState("random");
+  const [type, setType] = useState();
+  const [data, setData] = useState();
 
-  const [randomQA, setRandomQA] = useState([
-    {
-      question: `How do you prepare for an interview?'`,
-      answer: "Flash it!!!",
-    },
-  ]);
+  const [randomQA, setRandomQA] = useState({
+    question: `How do you prepare for an interview?'`,
+    answer: "Flash it!!!",
+  });
   const [flip, setFlip] = useState(false);
 
-  async function getData(id) {
-    await axios
-      .get(`http://localhost:3001/questions/${id}`)
-      .then((response) => {
-        setRandomQA(response.data.payload);
-        console.log(randomQA);
+  useEffect(() => {
+    async function getData() {
+      await axios.get(`http://localhost:3001/questions`).then((response) => {
+        setData(response.data.payload);
       });
+    }
+    getData();
+  }, []);
+  console.log("this is our data", data);
+
+  function navClick(event) {
+    setType(event.target.className);
+    console.log(type);
   }
 
-  // function handleClick(event) {
-  //   setType(event.target.text);
-  // }
-
   async function nextClick() {
-    const index = Math.floor(Math.random() * 22);
-    console.log(index);
-    let data = await getData(index);
-    console.log("Button clicked");
-    console.log(randomQA[0].question);
-    return data;
+    setType("Technical");
+    const result = data.filter((object) => object.subject === type);
+    console.log("this is the result", result);
+    const index = Math.floor(Math.random() * result.length);
+    console.log(data, result, result[index]);
+    let resultObject = result[index];
+    console.log("what are you?", resultObject);
+    setRandomQA(resultObject);
   }
 
   function flipIt() {
@@ -52,12 +55,13 @@ function App() {
 
   return (
     <div className="App">
-      <NavBar />
+      <NavBar navClick={navClick} />
+
       <Cards>
-        <QCard id="questionCard" Qtext={randomQA[0].question} />
+        <QCard id="questionCard" Qtext={randomQA.question} />
         <ACard
           id="answerCard"
-          Atext={randomQA[0].answer}
+          Atext={randomQA.answer}
           onClick={flipIt}
           flipped={flip}
         />
