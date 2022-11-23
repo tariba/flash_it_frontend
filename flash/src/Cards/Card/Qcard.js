@@ -1,7 +1,7 @@
 import React from 'react';
 
 export default function Card ({Qtext}) {
-console.log('this is Qtext', Qtext)
+// console.log('this is Qtext', Qtext)
     return (
 
         <div>

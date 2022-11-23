@@ -7,7 +7,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 function App() {
-  const [type, setType] = useState();
+  const [subjectState, setSubjectState] = useState('Random');
   const [data, setData] = useState();
 
   const [randomQA, setRandomQA] = useState({
@@ -31,29 +31,48 @@ function App() {
   function navClick(event) {
     let subject = event.target.className;
     // console.log('this is even.target.className', subject);
-
-    let arr = ['Technical', 'Behavioural'];
-    let chosen = arr[Math.floor(Math.random()*arr.length)];
     // console.log('this is chosen', chosen);
-    if (subject === 'Random') subject = chosen; 
-    const result = data.filter((object) => object.subject === subject);
-    // console.log("this is the result", result);
-    const index = Math.floor(Math.random() * result.length);
-    // console.log(data, result, result[index]);
-    let resultObject = result[index];
-    // console.log("what are you?", resultObject);
-    setRandomQA(resultObject);
-    setType(subject);
+    if (subject === 'Random') {
+      const result = data.filter((object) => object.subject === 'Technical' || object.subject === 'Behavioural');
+      // console.log("this is the result", result);
+      const index = Math.floor(Math.random() * result.length);
+      // console.log(data, result, result[index]);
+      let resultObject = result[index];
+      // console.log("what are you?", resultObject);
+      setRandomQA(resultObject);
+      setSubjectState(subject);
+    } else {
+      const result = data.filter((object) => object.subject === subject);
+      // console.log("this is the result", result);
+      const index = Math.floor(Math.random() * result.length);
+      // console.log(data, result, result[index]);
+      let resultObject = result[index];
+      // console.log("what are you?", resultObject);
+      setRandomQA(resultObject);
+      setSubjectState(subject);
+    }
   }
 
   async function nextClick() {
-    const result = data.filter((object) => object.subject === type);
-    // console.log("this is the result", result);
-    const index = Math.floor(Math.random() * result.length);
-    // console.log(data, result, result[index]);
-    let resultObject = result[index];
-    // console.log("what are you?", resultObject);
-    setRandomQA(resultObject);
+    if (subjectState === 'Random') {
+      let arr = ['Technical', 'Behavioural'];
+      let chosen = arr[Math.floor(Math.random()*arr.length)];
+      const result = data.filter((object) => object.subject === chosen);
+      // console.log("this is the result", result);
+      const index = Math.floor(Math.random() * result.length);
+      // console.log(data, result, result[index]);
+      let resultObject = result[index];
+      // console.log("what are you?", resultObject);
+      setRandomQA(resultObject);
+    } else {
+      const result = data.filter((object) => object.subject === subjectState);
+      // console.log("this is the result", result);
+      const index = Math.floor(Math.random() * result.length);
+      // console.log(data, result, result[index]);
+      let resultObject = result[index];
+      // console.log("what are you?", resultObject);
+      setRandomQA(resultObject);
+    }
   }
 
   function flipIt() {
@@ -66,7 +85,7 @@ function App() {
       flipIt();
     }
   }
-console.log('this is the randomQA', randomQA);
+// console.log('this is the randomQA', randomQA);
   return (
     <div className="App">
       <NavBar navClick={navClick} />
