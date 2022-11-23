@@ -7,7 +7,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 function App() {
-  const [subjectState, setSubjectState] = useState('Random');
+  const [subjectState, setSubjectState] = useState("Random");
   const [data, setData] = useState();
 
   const [randomQA, setRandomQA] = useState({
@@ -26,14 +26,19 @@ function App() {
   }, []);
 
   // console.log("this is our data", data);
-  
 
   function navClick(event) {
+    if (flip) {
+      flipIt();
+    }
     let subject = event.target.className;
     // console.log('this is even.target.className', subject);
     // console.log('this is chosen', chosen);
-    if (subject === 'Random') {
-      const result = data.filter((object) => object.subject === 'Technical' || object.subject === 'Behavioural');
+    if (subject === "Random") {
+      const result = data.filter(
+        (object) =>
+          object.subject === "Technical" || object.subject === "Behavioural"
+      );
       // console.log("this is the result", result);
       const index = Math.floor(Math.random() * result.length);
       // console.log(data, result, result[index]);
@@ -54,9 +59,9 @@ function App() {
   }
 
   async function nextClick() {
-    if (subjectState === 'Random') {
-      let arr = ['Technical', 'Behavioural'];
-      let chosen = arr[Math.floor(Math.random()*arr.length)];
+    if (subjectState === "Random") {
+      let arr = ["Technical", "Behavioural"];
+      let chosen = arr[Math.floor(Math.random() * arr.length)];
       const result = data.filter((object) => object.subject === chosen);
       // console.log("this is the result", result);
       const index = Math.floor(Math.random() * result.length);
@@ -85,7 +90,7 @@ function App() {
       flipIt();
     }
   }
-// console.log('this is the randomQA', randomQA);
+  // console.log('this is the randomQA', randomQA);
   return (
     <div className="App">
       <NavBar navClick={navClick} />

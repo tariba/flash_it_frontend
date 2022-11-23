@@ -1,9 +1,4 @@
-
-  #answer {
-    text-align: center;
-  }
-
-  #paragraph {
+#paragraph {
     text-align: center;
     border: 1px solid black;
     max-width: 600px;
