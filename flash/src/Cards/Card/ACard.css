@@ -4,6 +4,7 @@
   }
 
   #paragraph {
+    display : flex;
     text-align: center;
     border: 1px solid black;
     max-width: 600px;
