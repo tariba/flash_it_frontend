@@ -11,7 +11,7 @@ function App() {
   const [data, setData] = useState();
 
   const [randomQA, setRandomQA] = useState({
-    question: `How do you prepare for an interview?'`,
+    question: `How do you prepare for an interview?`,
     answer: "Flash it!!!",
   });
   const [flip, setFlip] = useState(false);
@@ -94,8 +94,8 @@ function App() {
   return (
     <div className="App">
       <NavBar navClick={navClick} />
-      <Cards id = 'cards'>
-        <div id='card-holder'>
+      <Cards id="cards">
+        <div id="card-holder">
           <QCard id="questionCard" Qtext={randomQA.question} />
           <ACard
             id="answerCard"
@@ -104,7 +104,9 @@ function App() {
             flipped={flip}
           />
         </div>
-        <button id='button-64' onClick={handleClick}><span>Next Question</span></button>
+        <button id="button-64" onClick={handleClick}>
+          <span>Next Question</span>
+        </button>
       </Cards>
     </div>
   );
