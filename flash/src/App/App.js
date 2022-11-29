@@ -4,7 +4,7 @@ import Cards from "../Cards/Cards";
 import QCard from "../Cards/Card/Qcard";
 import ACard from "../Cards/Card/ACard";
 import { useState, useEffect } from "react";
-import axios from "axios";
+import axios from "./lib/axios.js";
 
 function App() {
   const [subjectState, setSubjectState] = useState("Random");
