@@ -1,8 +1,8 @@
-import { render, screen } from '@testing-library/react';
-import App from './App';
+import { render, screen } from "@testing-library/react";
+import App from "./App";
+jest.mock('axios'); // This overwrites axios methods with jest Mock
+import axios from 'axios';
 
-test('renders learn react link', () => {
+test('renders the app', () => {
   render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
 });
