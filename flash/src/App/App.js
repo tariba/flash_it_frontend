@@ -14,12 +14,26 @@ function App() {
   const [data, setData] = useState();
 
   // used to hide the answer
-  const [flip, setFlip] = useState(false);
+  const [flipped, setFlipped] = useState(false);
 
   const [randomQA, setRandomQA] = useState({
     question: `How do you prepare for an interview?`,
     answer: "Flash it!!!",
   });
+
+  /*
+   * a function that returns a random data object from any array passed to it
+   */
+  function getRandomObject(dataArr) {
+    return dataArr[Math.floor(Math.random() * dataArr.length)];
+  }
+
+  /*
+   * a fn that filters the data inside the array and return a object with a specific subject
+   */
+  function filterArrBySubject(dataArr, subject) {
+    return dataArr.filter((object) => object.subject === subject);
+  }
 
   // used axios instead of fetch
   useEffect(() => {
@@ -36,33 +50,21 @@ function App() {
    */
   function navClick(event) {
     // if the answer is shown, it's going to hide it
-    if (flip) {
-      flipIt();
+    if (flipped) {
+      flipAnswerCard();
     }
-
     // get the className of the clicked button
     let subject = event.target.className;
-
     // if Random button is clicked return technical and behavioural questions
     if (subject === "Random") {
-      const result = data.filter(
-        (object) =>
-          object.subject === "Technical" || object.subject === "Behavioural"
-      );
-
-      // generate a random number to pick up a question/answer object based on the index
-      const index = Math.floor(Math.random() * result.length);
-      let resultObject = result[index];
-
+      let resultObject = getRandomObject(data);
       // set the states
       setRandomQA(resultObject);
       setSubjectState(subject);
     } else {
       // if the subject is not random, filter the data by subject
-      const result = data.filter((object) => object.subject === subject);
-      // generate a random number to pick up a question/answer object based on the index
-      const index = Math.floor(Math.random() * result.length);
-      let resultObject = result[index];
+      const resultArr = filterArrBySubject(data, subject);
+      let resultObject = getRandomObject(resultArr);
       // set the states
       setRandomQA(resultObject);
       setSubjectState(subject);
@@ -74,16 +76,12 @@ function App() {
    */
   async function nextClick() {
     if (subjectState === "Random") {
-      let arr = ["Technical", "Behavioural"];
-      let chosen = arr[Math.floor(Math.random() * arr.length)];
-      const result = data.filter((object) => object.subject === chosen);
-      const index = Math.floor(Math.random() * result.length);
-      let resultObject = result[index];
+      let resultObject = getRandomObject(data);
       setRandomQA(resultObject);
     } else {
-      const result = data.filter((object) => object.subject === subjectState);
-      const index = Math.floor(Math.random() * result.length);
-      let resultObject = result[index];
+      const resultArr = filterArrBySubject(data, subjectState);
+
+      let resultObject = getRandomObject(resultArr);
       setRandomQA(resultObject);
     }
   }
@@ -91,8 +89,8 @@ function App() {
   /*
    * a function that changes the answer flipped state (shows/hides the answer)
    */
-  function flipIt() {
-    setFlip(!flip);
+  function flipAnswerCard() {
+    setFlipped(!flipped);
   }
 
   /*
@@ -100,8 +98,8 @@ function App() {
    */
   function handleClick() {
     nextClick();
-    if (flip) {
-      flipIt();
+    if (flipped) {
+      flipAnswerCard();
     }
   }
 
@@ -115,8 +113,8 @@ function App() {
           <ACard
             id="answerCard"
             Atext={randomQA.answer}
-            onClick={flipIt}
-            flipped={flip}
+            onClick={flipAnswerCard}
+            flipped={flipped}
           />
         </div>
         <button id="button-64" onClick={handleClick}>

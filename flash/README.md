@@ -1,70 +1,54 @@
-# Getting Started with Create React App
+Refactoring PLAN
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+1. Inside the nextClick fn
 
-## Available Scripts
+Comment out line 77, which is an array with 2 values inside: Technical and Behavioural
 
-In the project directory, you can run:
+Line 78, change arr.length to data.length
 
-### `npm start`
+FROM THIS //let arr = ["Technical", "Behavioural"];
+//let chosen = arr[Math.floor(Math.random() * arr.length)];
+//const result = data.filter((object) => object.subject === chosen);
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+=> TO THIS const index = Math.floor(Math.random() \* data.length);
+let resultObject = data[index];
+setRandomQA(resultObject);
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+2. Changed the state flip to flipped
 
-### `npm test`
+3. Changed the flipIt name to flipAnswerCard
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+4. Inside navClick fn
 
-### `npm run build`
+FROM THIS // const result = data.filter(
+// (object) =>
+// object.subject === "Technical" || object.subject === "Behavioural"
+// );
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+=> TO THIS const index = Math.floor(Math.random() \* data.length);
+let resultObject = data[index];
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+5. We create another function that returns a random data object from any array passed to it, so we can call it wherever we need it
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+FROM THIS TWO LINES REPEATED TWICE
+// let randomDataObject = data[Math.floor(Math.random() * data.length)];
 
-### `npm run eject`
+// let randomResultObject = data[Math.floor(Math.random() * result.length)];
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+TO THIS function getRandomObject(dataArr) {
+return dataArr[Math.floor(Math.random() * dataArr.length)];
+}
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+6. Created a function that takes in 2 arguments dataArr and subject, which is going to filter the data inside the array and return a object with a specific subject
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+FROM THIS
+Line 66 // const resultArr = data.filter((object) => object.subject === subject);
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Line 82 //const resultArr data.filter( (object) => object.subject === subjectState);
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+TO THIS =>  
+function filterArrBySubject(dataArr, subject) {
+return dataArr.filter((object) => object.subject === subject);
+}
+const resultArr = filterArrBySubject(data, subject); LINE 66
+const resultArr = filterArrBySubject(data, subjectState); line 82
