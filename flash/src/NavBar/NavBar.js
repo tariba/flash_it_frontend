@@ -1,13 +1,19 @@
+/* eslint-disable react/jsx-no-comment-textnodes */
 import React from "react";
 import "./NavBar.css";
 import img from "./KcnaXGx6i.png";
 
+/*
+ * this fn takes in a prop, navClick
+ */
 function NavBar({ navClick }) {
   return (
+    // logo image
     <div id="head">
       <div id="image">
         <img src={img} alt="logo" />
       </div>
+
       <nav id="nav-bar">
         <button
           id="button-85"
@@ -18,6 +24,7 @@ function NavBar({ navClick }) {
         >
           Technical
         </button>
+
         <button
           id="button-86"
           className="Behavioural"
@@ -27,6 +34,7 @@ function NavBar({ navClick }) {
         >
           Behavioural
         </button>
+
         <button
           id="button-87"
           className="Random"

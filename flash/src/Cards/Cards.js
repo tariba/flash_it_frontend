@@ -1,8 +1,7 @@
 import React from "react";
 
-// question, answer, nextClick
+// passing children from app.js
 function Cards({ children }) {
-  // const [flip, setFlip] = useState(false);
   return <div className="cards">{children}</div>;
 }
 
