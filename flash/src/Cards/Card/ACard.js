@@ -9,13 +9,7 @@ export default function Card({ Atext, flipped, onClick }) {
     <div className="div1" onClick={onClick}>
       {flipped ? <p id="paragraph">{Atext}</p> : <p id="paragraph">Click here to show answer</p>}
 
-    <div onClick={onClick}>
-      {flipped ? (
-        <p id="paragraph">{Atext}</p>
-      ) : (
-        <p id="paragraph">Click here to show answer</p>
-      )}
-
+ 
     </div>
   );
 }
