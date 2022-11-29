@@ -7,15 +7,21 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 function App() {
+  // change the state of the subject
   const [subjectState, setSubjectState] = useState("Random");
+
+  // save the data when the page is loaded
   const [data, setData] = useState();
+
+  // used to hide the answer
+  const [flip, setFlip] = useState(false);
 
   const [randomQA, setRandomQA] = useState({
     question: `How do you prepare for an interview?`,
     answer: "Flash it!!!",
   });
-  const [flip, setFlip] = useState(false);
 
+  // used axios instead of fetch
   useEffect(() => {
     async function getData() {
       await axios.get(`http://localhost:3001/questions`).then((response) => {
@@ -25,72 +31,81 @@ function App() {
     getData();
   }, []);
 
-  // console.log("this is our data", data);
-
+  /*
+   * a function that returns the question/answer object when a button is clicked
+   */
   function navClick(event) {
+    // if the answer is shown, it's going to hide it
     if (flip) {
       flipIt();
     }
+
+    // get the className of the clicked button
     let subject = event.target.className;
-    // console.log('this is even.target.className', subject);
-    // console.log('this is chosen', chosen);
+
+    // if Random button is clicked return technical and behavioural questions
     if (subject === "Random") {
       const result = data.filter(
         (object) =>
           object.subject === "Technical" || object.subject === "Behavioural"
       );
-      // console.log("this is the result", result);
+
+      // generate a random number to pick up a question/answer object based on the index
       const index = Math.floor(Math.random() * result.length);
-      // console.log(data, result, result[index]);
       let resultObject = result[index];
-      // console.log("what are you?", resultObject);
+
+      // set the states
       setRandomQA(resultObject);
       setSubjectState(subject);
     } else {
+      // if the subject is not random, filter the data by subject
       const result = data.filter((object) => object.subject === subject);
-      // console.log("this is the result", result);
+      // generate a random number to pick up a question/answer object based on the index
       const index = Math.floor(Math.random() * result.length);
-      // console.log(data, result, result[index]);
       let resultObject = result[index];
-      // console.log("what are you?", resultObject);
+      // set the states
       setRandomQA(resultObject);
       setSubjectState(subject);
     }
   }
 
+  /*
+   * a function that sets the random QA object bases on subject's state
+   */
   async function nextClick() {
     if (subjectState === "Random") {
       let arr = ["Technical", "Behavioural"];
       let chosen = arr[Math.floor(Math.random() * arr.length)];
       const result = data.filter((object) => object.subject === chosen);
-      // console.log("this is the result", result);
       const index = Math.floor(Math.random() * result.length);
-      // console.log(data, result, result[index]);
       let resultObject = result[index];
-      // console.log("what are you?", resultObject);
       setRandomQA(resultObject);
     } else {
       const result = data.filter((object) => object.subject === subjectState);
-      // console.log("this is the result", result);
       const index = Math.floor(Math.random() * result.length);
-      // console.log(data, result, result[index]);
       let resultObject = result[index];
-      // console.log("what are you?", resultObject);
       setRandomQA(resultObject);
     }
   }
 
+  /*
+   * a function that changes the answer flipped state (shows/hides the answer)
+   */
   function flipIt() {
     setFlip(!flip);
   }
 
+  /*
+   * a function that runs nextClick fn once async state has resolved and changes flip state if necessary
+   */
   function handleClick() {
     nextClick();
     if (flip) {
       flipIt();
     }
   }
-  // console.log('this is the randomQA', randomQA);
+
+  // renders the page
   return (
     <div className="App">
       <NavBar navClick={navClick} />
