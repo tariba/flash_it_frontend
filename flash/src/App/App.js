@@ -17,7 +17,7 @@ function App() {
   const [flip, setFlip] = useState(false);
 
   const [randomQA, setRandomQA] = useState({
-    question: `How do you prepare for an interview?'`,
+    question: `How do you prepare for an interview?`,
     answer: "Flash it!!!",
   });
 
