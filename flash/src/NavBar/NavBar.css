@@ -17,7 +17,7 @@ img {
   height: 250px;
 }
 
-#button-85 {
+#button2, #button3, #button4 {
   padding: 0.6em 2em;
   border: none;
   outline: none;
@@ -34,7 +34,7 @@ img {
   display: flexbox;
 }
 
-#button-85:before {
+#button2:before {
   content: "";
   background: linear-gradient(
     90deg,
@@ -58,7 +58,7 @@ img {
   border-radius: 10px;
 }
 
-@keyframes glowing-button-85 {
+@keyframes glowing-button2 {
   0% {
     background-position: 0 0;
   }
@@ -70,7 +70,7 @@ img {
   }
 }
 
-#button-85:after {
+#button2:after, #button3:after, #button4:after {
   z-index: -1;
   content: "";
   position: absolute;
@@ -82,23 +82,8 @@ img {
   border-radius: 10px;
 }
 
-#button-86 {
-  padding: 0.6em 2em;
-  border: none;
-  outline: none;
-  color: rgb(255, 255, 255);
-  background: #111;
-  cursor: pointer;
-  position: relative;
-  z-index: 0;
-  border-radius: 10px;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-  margin: 30px;
-}
 
-#button-86:before {
+#button3:before {
   content: "";
   background: linear-gradient(
     90deg,
@@ -122,7 +107,7 @@ img {
   border-radius: 10px;
 }
 
-@keyframes glowing-button-86 {
+@keyframes glowing-button3 {
   0% {
     background-position: 0 0;
   }
@@ -134,35 +119,8 @@ img {
   }
 }
 
-#button-86:after {
-  z-index: -1;
-  content: "";
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background: #222;
-  left: 0;
-  top: 0;
-  border-radius: 10px;
-}
 
-#button-87 {
-  padding: 0.6em 2em;
-  border: none;
-  outline: none;
-  color: rgb(255, 255, 255);
-  background: #111;
-  cursor: pointer;
-  position: relative;
-  z-index: 0;
-  border-radius: 10px;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-  margin: 30px;
-}
-
-#button-87:before {
+#button4:before {
   content: "";
   background: linear-gradient(
     90deg,
@@ -186,7 +144,7 @@ img {
   border-radius: 10px;
 }
 
-@keyframes glowing-button-87 {
+@keyframes glowing-button4 {
   0% {
     background-position: 0 0;
   }
@@ -198,14 +156,3 @@ img {
   }
 }
 
-#button-87:after {
-  z-index: -1;
-  content: "";
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background: #222;
-  left: 0;
-  top: 0;
-  border-radius: 10px;
-}
