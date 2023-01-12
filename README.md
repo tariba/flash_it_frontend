@@ -1,0 +1,6 @@
+- Define a name for each button ✅
+- Create a state inside the common component to set the state when each button is pressed
+- Set route handler to fetch all the data based on the subject i.e technical
+- Create if statement inside App.js function to cycle through subjects and send fetch request based on the specific button
+- Create a new state that holds all fetched data
+- Generate a random number on current array length

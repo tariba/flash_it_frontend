@@ -6,7 +6,8 @@ Comment out line 77, which is an array with 2 values inside: Technical and Behav
 
 Line 78, change arr.length to data.length
 
-FROM THIS //let arr = ["Technical", "Behavioural"];
+FROM THIS
+//let arr = ["Technical", "Behavioural"];
 //let chosen = arr[Math.floor(Math.random() * arr.length)];
 //const result = data.filter((object) => object.subject === chosen);
 
@@ -20,7 +21,8 @@ setRandomQA(resultObject);
 
 4. Inside navClick fn
 
-FROM THIS // const result = data.filter(
+FROM THIS
+// const result = data.filter(
 // (object) =>
 // object.subject === "Technical" || object.subject === "Behavioural"
 // );

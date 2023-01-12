@@ -29,7 +29,7 @@ function App() {
   }
 
   /*
-   * a fn that filters the data inside the array and return a object with a specific subject
+   * a fn that filters the data inside the array and return an object with a specific subject
    */
   function filterArrBySubject(dataArr, subject) {
     return dataArr.filter((object) => object.subject === subject);
@@ -72,7 +72,7 @@ function App() {
   }
 
   /*
-   * a function that sets the random QA object bases on subject's state
+   * a function that sets the random QA object based on subject's state
    */
   async function nextClick() {
     if (subjectState === "Random") {
