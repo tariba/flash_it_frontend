@@ -16,7 +16,7 @@ function NavBar({ navClick }) {
 
       <nav id="nav-bar">
         <button
-          id="button-85"
+          id="button2"
           className="Technical"
           onClick={(e) => {
             navClick(e);
@@ -26,7 +26,7 @@ function NavBar({ navClick }) {
         </button>
 
         <button
-          id="button-86"
+          id="button3"
           className="Behavioural"
           onClick={(e) => {
             navClick(e);
@@ -36,7 +36,7 @@ function NavBar({ navClick }) {
         </button>
 
         <button
-          id="button-87"
+          id="button4"
           className="Random"
           onClick={(e) => {
             navClick(e);

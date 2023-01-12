@@ -18,7 +18,7 @@ test("Behavioural Button", () => {
   expect(button).toHaveTextContent("Behavioural");
 });
 
-test("Random image", () => {
+test("Random Button", () => {
   render(<NavBar buttonText="Random" />);
   const button = screen.getByText("Random");
   expect(button).toBeInTheDocument();
