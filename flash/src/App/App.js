@@ -39,7 +39,8 @@ function App() {
   // used axios instead of fetch
   useEffect(() => {
     async function getData() {
-      await axios.get(`https://flash-it-backend.onrender.com/questions`).then((response) => {
+      let URL = process.env.REACT_APP_URL
+      await axios.get(URL).then((response) => {
         setData(response.data.payload);
       });
     }
