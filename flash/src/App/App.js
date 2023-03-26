@@ -22,6 +22,18 @@ function App() {
     answer: "Flash it!!!",
   });
 
+  // used axios instead of fetch
+  useEffect(() => {
+    async function getData() {
+      let URL = process.env.REACT_APP_URL
+      
+      await axios.get(URL).then((response) => {
+        setData(response.data.payload);
+      });
+    }
+    getData();
+  }, []);
+  
   /*
    * a function that returns a random data object from any array passed to it
    */
@@ -36,16 +48,7 @@ function App() {
     return dataArr.filter((object) => object.subject === subject);
   }
 
-  // used axios instead of fetch
-  useEffect(() => {
-    async function getData() {
-      let URL = process.env.REACT_APP_URL
-      await axios.get(URL).then((response) => {
-        setData(response.data.payload);
-      });
-    }
-    getData();
-  }, []);
+  
 
   /*
    * a function that returns the question/answer object when a button is clicked
