@@ -1,56 +1,152 @@
-Refactoring PLAN
+# Flash It! 🚀
 
-1. Inside the nextClick fn
+A React-based flashcard application designed to help users practice interview questions with an interactive and engaging interface.
 
-Comment out line 77, which is an array with 2 values inside: Technical and Behavioural
+![Flash It App](https://flash-it-front-end.onrender.com/)
 
-Line 78, change arr.length to data.length
+## 🌟 Features
 
-FROM THIS
-//let arr = ["Technical", "Behavioural"];
-//let chosen = arr[Math.floor(Math.random() * arr.length)];
-//const result = data.filter((object) => object.subject === chosen);
+- **Interactive Flashcards**: Click to reveal answers with smooth flip animations
+- **Multiple Categories**: 
+  - Technical questions for coding interviews
+  - Behavioral questions for soft skills assessment
+  - Random mode for mixed practice
+- **Dynamic Question Loading**: Questions are fetched from a backend API
+- **Responsive Design**: Works seamlessly across desktop and mobile devices
+- **Clean UI**: Modern, intuitive interface with Flash superhero branding
 
-=> TO THIS const index = Math.floor(Math.random() \* data.length);
-let resultObject = data[index];
-setRandomQA(resultObject);
+## 🚀 Live Demo
 
-2. Changed the state flip to flipped
+**Deployed Application**: [https://flash-it-front-end.onrender.com/](https://flash-it-front-end.onrender.com/)
 
-3. Changed the flipIt name to flipAnswerCard
+## 🛠️ Tech Stack
 
-4. Inside navClick fn
+- **Frontend**: React 18.2.0
+- **HTTP Client**: Axios 1.6.7
+- **Styling**: CSS3 with custom animations
+- **Testing**: React Testing Library
+- **Build Tool**: Create React App
+- **Deployment**: Render
 
-FROM THIS
-// const result = data.filter(
-// (object) =>
-// object.subject === "Technical" || object.subject === "Behavioural"
-// );
+## 📦 Installation & Setup
 
-=> TO THIS const index = Math.floor(Math.random() \* data.length);
-let resultObject = data[index];
+### Prerequisites
+- Node.js (v14 or higher)
+- npm or yarn
 
-5. We create another function that returns a random data object from any array passed to it, so we can call it wherever we need it
+### Local Development
 
-FROM THIS TWO LINES REPEATED TWICE
-// let randomDataObject = data[Math.floor(Math.random() * data.length)];
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/tariba/flash_it_frontend.git
+   cd flash_it_frontend
+   ```
 
-// let randomResultObject = data[Math.floor(Math.random() * result.length)];
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
 
-TO THIS function getRandomObject(dataArr) {
-return dataArr[Math.floor(Math.random() * dataArr.length)];
-}
+3. **Set up environment variables**
+   Create a `.env` file in the root directory:
+   ```env
+   REACT_APP_URL=your_backend_api_url
+   ```
 
-6. Created a function that takes in 2 arguments dataArr and subject, which is going to filter the data inside the array and return a object with a specific subject
+4. **Start the development server**
+   ```bash
+   npm start
+   ```
 
-FROM THIS
-Line 66 // const resultArr = data.filter((object) => object.subject === subject);
+5. **Open your browser**
+   Navigate to `http://localhost:3000`
 
-Line 82 //const resultArr data.filter( (object) => object.subject === subjectState);
+## 🏗️ Project Structure
 
-TO THIS =>  
-function filterArrBySubject(dataArr, subject) {
-return dataArr.filter((object) => object.subject === subject);
-}
-const resultArr = filterArrBySubject(data, subject); LINE 66
-const resultArr = filterArrBySubject(data, subjectState); line 82
+```
+src/
+├── App/
+│   ├── App.js          # Main application component
+│   ├── App.css         # Application styles
+│   └── App.test.js     # App tests
+├── NavBar/
+│   ├── NavBar.js       # Navigation component
+│   ├── NavBar.css      # Navigation styles
+│   └── *.png           # Logo assets
+├── Cards/
+│   └── Card/           # Flashcard components
+├── index.js            # Application entry point
+└── index.css           # Global styles
+```
+
+## 🎯 How It Works
+
+1. **Question Categories**: Users can select from Technical, Behavioral, or Random questions
+2. **Card Interaction**: Click on the answer card to reveal/hide the answer
+3. **Navigation**: Use "Next Question" to get a new random question from the selected category
+4. **State Management**: React hooks manage the application state including:
+   - Current question/answer pair
+   - Selected category
+   - Card flip state
+
+## 🔧 Key Functions
+
+- `getRandomObject(dataArr)`: Returns a random object from any array
+- `filterArrBySubject(dataArr, subject)`: Filters questions by category
+- `navClick(event)`: Handles category selection
+- `nextClick()`: Loads the next question based on current category
+- `flipAnswerCard()`: Toggles answer visibility
+
+## 📱 API Integration
+
+The app connects to a backend API to fetch interview questions. Questions are loaded on component mount using axios and stored in React state.
+
+## 🧪 Testing
+
+Run the test suite:
+```bash
+npm test
+```
+
+## 🚀 Deployment
+
+The app is deployed on Render and automatically builds from the main branch.
+
+To deploy your own instance:
+1. Fork this repository
+2. Connect your Render account to GitHub
+3. Create a new web service pointing to your fork
+4. Set the build command: `npm run build`
+5. Set the start command: `serve -s build`
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## 📄 License
+
+This project is open source and available under the [MIT License](LICENSE).
+
+## 👨‍💻 Author
+
+**Tariq** - [GitHub Profile](https://github.com/tariba)
+
+---
+
+## 📝 Development Notes
+
+### Recent Updates
+- Updated all dependencies to latest versions (January 2024)
+- Improved code organization with helper functions
+- Enhanced state management for better performance
+- Refactored random question selection logic
+
+### Refactoring History
+- Consolidated duplicate random selection logic into `getRandomObject()` function
+- Created `filterArrBySubject()` for cleaner data filtering
+- Renamed `flip` state to `flipped` for clarity
+- Renamed `flipIt` function to `flipAnswerCard` for better naming convention
