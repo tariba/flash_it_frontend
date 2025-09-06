@@ -2,7 +2,9 @@
 
 A React-based flashcard application designed to help users practice interview questions with an interactive and engaging interface.
 
-![Flash It App](https://flash-it-front-end.onrender.com/)
+[Flash It App](https://flash-it-front-end.onrender.com/)
+
+⚠️ **Note:** Because this API is hosted on Render’s free tier, the first request after inactivity may take up to **50 seconds** to respond while the server “wakes up.”
 
 ## 🌟 Features
 
